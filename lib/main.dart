@@ -29,6 +29,8 @@ class MainApp extends StatelessWidget {
   }
 }
 
+//mostly complete, need to figure out how to make it
+//show up only at the start when launching
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
 
