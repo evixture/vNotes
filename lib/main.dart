@@ -92,11 +92,25 @@ class NewHomePageState extends State<NewHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
+        reverse: true,
         children: [
-          Wrap(
+          Row(
             children: [
-              //note
-              testNote(),
+              //left column
+              Expanded(
+                  child: Column(
+                verticalDirection: VerticalDirection.up,
+                children: [
+                  testNote(true, "test1", 100),
+                  testNote(false, "test3", 150)
+                ],
+              )),
+              //right column
+              Expanded(
+                  child: Column(
+                verticalDirection: VerticalDirection.up,
+                children: [testNote(true, "test2", 200)],
+              )),
             ],
           )
         ],
@@ -104,6 +118,7 @@ class NewHomePageState extends State<NewHomePage> {
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
           height: 80,
+          elevation: 0,
           color: Colors.black,
           child: Row(
             children: [
@@ -137,40 +152,56 @@ const Text(
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
+
+
+
+  //right column
+              Expanded(
+                  child: Column(
+                verticalDirection: VerticalDirection.up,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [testNote("test2")],
+              )),
 */
 
-Container testNote() {
+Row testNoteElement(bool drawIcon, String text) {
+  return Row(
+    children: [
+      Container(
+        margin: const EdgeInsets.only(right: 10),
+        child: const Icon(Icons.text_fields_rounded),
+      ),
+      RichText(
+          text: TextSpan(
+              text: text,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16)))
+    ],
+  );
+}
+
+Container testNote(bool drawIcon, String text, double noteHeight) {
   return //note
       Container(
     //outside
-    margin: const EdgeInsets.all(15),
+    margin: const EdgeInsets.all(10),
     //inside
-    padding: const EdgeInsets.all(15),
-    //height: 400,
+    padding: const EdgeInsets.all(10),
+    height: noteHeight,
     //width: 150,
+    //trying to align notes in row to bottom, not working well so far
+    //alignment: Alignment.topRight,
     decoration: BoxDecoration(
       color: Colors.white,
       border: Border.all(width: 0, color: Colors.white),
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      borderRadius: const BorderRadius.all(Radius.circular(5)),
     ),
     child: Column(
       children: [
         //note elements
-        Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              child: const Icon(Icons.text_fields_rounded),
-            ),
-            RichText(
-                text: const TextSpan(
-                    text: "NOTE TEXT",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24)))
-          ],
-        ),
+        testNoteElement(true, text)
       ],
     ),
   );
