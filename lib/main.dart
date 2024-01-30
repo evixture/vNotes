@@ -21,8 +21,8 @@ class MainApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      //home: const NewHomePage(),
-      home: const SplashPage(),
+      home: const NewHomePage(),
+      //home: const SplashPage(),
 
       //home: const HomePage(title: 'Flutter Demo Home Page'),
     );
@@ -91,17 +91,138 @@ class NewHomePageState extends State<NewHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-        child: const Icon(Icons.add),
+      body: ListView(
+        children: [
+          Wrap(
+            children: [
+              //note
+              testNote(),
+            ],
+          )
+        ],
       ),
+      //bottom app bar
+      bottomNavigationBar: BottomAppBar(
+          height: 80,
+          color: Colors.black,
+          child: Row(
+            children: [
+              const Text(
+                "CATEGORY NAME",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Spacer(),
+              FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed code here!
+                },
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                child: const Icon(Icons.add),
+              ),
+            ],
+          )),
     );
   }
 }
+
+/*
+const Text(
+                "CATEGORY NAME",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+*/
+
+Container testNote() {
+  return //note
+      Container(
+    //outside
+    margin: const EdgeInsets.all(15),
+    //inside
+    padding: const EdgeInsets.all(15),
+    //height: 400,
+    //width: 150,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(width: 0, color: Colors.white),
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+    ),
+    child: Column(
+      children: [
+        //note elements
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 10),
+              child: const Icon(Icons.text_fields_rounded),
+            ),
+            RichText(
+                text: const TextSpan(
+                    text: "NOTE TEXT",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24)))
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+/*
+  Widget build(BuildContext context) {
+      return Scaffold(
+        backgroundColor: Colors.black,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Add your onPressed code here!
+          },
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
+          child: const Icon(Icons.add),
+        ),
+      );
+    }
+
+  //note
+  Container(
+    //outside
+    margin: EdgeInsets.all(15),
+    //inside
+    padding: EdgeInsets.all(15),
+    height: 400,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(width: 0, color: Colors.white),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    child: Column(
+      children: [
+        //note elements
+        Row(
+          children: [
+            Icon(Icons.text_fields_rounded),
+            RichText(
+                text: TextSpan(
+                    text: "NOTE TEXT",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )))
+          ],
+        ),
+      ],
+    ),
+  ),
+
+*/
 
 //---------------
 //
