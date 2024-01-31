@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 void main() {
   runApp(const MainApp());
@@ -188,14 +189,15 @@ Row testNoteElement(bool drawIcon, String text) {
       if (drawIcon) ...{
         Container(
         margin: const EdgeInsets.only(right: 10),
-        child: const Icon(Icons.text_fields_rounded),
+        child: const Icon(Icons.text_fields_rounded, color: Colors.white),
         ),
       },
       RichText(
         text: TextSpan(
           text: text,
           style: const TextStyle(
-            color: Colors.black,
+            //color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 16
           )
@@ -216,10 +218,19 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
       //width: 150,
       //trying to align notes in row to bottom, not working well so far
       //alignment: Alignment.topRight,
+
+      /*
+      SOLID WHITE BG
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 0, color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.circular(5)),
+      ),
+      */
+      decoration: BoxDecoration(
+        color: Colors.black,
+        border: Border.all(width: 5, color: Colors.white),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
         children: [
