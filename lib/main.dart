@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MainApp());
@@ -94,44 +95,13 @@ class NewHomePageState extends State<NewHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: ListView(
-        reverse: true,
-        children: [
-          Row(
-            children: [
-
-              /*
-                PROBLEM
-                  left and right column should have different heights but are the same,
-                  having the same bounds is ok if they both align to the bottom, but
-                  the smaller one aligns centered :(
-              */
-
-              //left column
-              Expanded(
-                child: Column(
-                  verticalDirection: VerticalDirection.up,
-                  children: [
-                    testNote(true, "test1", 100),
-                    testNote(false, "test3", 150),
-                    testNote(false, "test4", 150)
-                  ],
-                )
-              ),
-              //right column
-              Expanded(
-                child: Column(
-                  verticalDirection: VerticalDirection.up,
-                  
-                  children: [
-                    testNote(true, "test2", 200)
-                  ],
-                )
-              ),
-            ],
-          )
-        ],
-      ),
+      body: MasonryGridView.count(
+        crossAxisCount: 4,        
+        itemBuilder: (context, index) {
+          var rng = Random();
+          return testNote(true, 'something', rng.nextDouble() * 400 + 100);
+        },
+        ),
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
         height: 80,
@@ -159,6 +129,54 @@ class NewHomePageState extends State<NewHomePage> {
           ],
         )
       ),
+    );
+  }
+}
+
+class oldListView extends StatelessWidget {
+  const oldListView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      reverse: true,
+      children: [
+        Row(
+          children: [
+    
+            /*
+              PROBLEM
+                left and right column should have different heights but are the same,
+                having the same bounds is ok if they both align to the bottom, but
+                the smaller one aligns centered :(
+            */
+    
+            //left column
+            Expanded(
+              child: Column(
+                verticalDirection: VerticalDirection.up,
+                children: [
+                  testNote(true, "test1", 100),
+                  testNote(false, "test3", 150),
+                  testNote(false, "test4", 150)
+                ],
+              )
+            ),
+            //right column
+            Expanded(
+              child: Column(
+                verticalDirection: VerticalDirection.up,
+                
+                children: [
+                  testNote(true, "test2", 200)
+                ],
+              )
+            ),
+          ],
+        )
+      ],
     );
   }
 }
@@ -214,7 +232,7 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
       margin: const EdgeInsets.all(10),
       //inside
       padding: const EdgeInsets.all(10),
-      //height: noteHeight,
+      height: noteHeight,
       //width: 150,
       //trying to align notes in row to bottom, not working well so far
       //alignment: Alignment.topRight,
@@ -229,7 +247,7 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
       */
       decoration: BoxDecoration(
         color: Colors.black,
-        border: Border.all(width: 5, color: Colors.white),
+        border: Border.all(width: 2, color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
