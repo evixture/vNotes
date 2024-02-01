@@ -95,12 +95,20 @@ class NewHomePageState extends State<NewHomePage> {
       backgroundColor: Colors.black,
       body: MasonryGridView.count(
         crossAxisCount: 2,
-        itemCount: 20,
+        itemCount: 15,
         reverse: true,
         padding: EdgeInsets.zero,
+        //addAutomaticKeepAlives: false,
+        //clipBehavior: Clip.antiAlias,
+        //addRepaintBoundaries: false,
         itemBuilder: (context, index) {
+          //item builder is called whenever an item is on screen
+          //this is likely what is causing the inconsistent ordering
+          //because random is being called every time an item
+          //re-enters the screen
           var rng = Random();
-          return testNote(true, 'something', rng.nextDouble() * 300 + 150);
+          double rngHeight = rng.nextDouble() * 300 + 150;
+          return testNote(true, '${index}, ${rngHeight.round()}', rngHeight);
         },
       ),
       //bottom app bar
