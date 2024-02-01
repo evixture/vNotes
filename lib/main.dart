@@ -41,26 +41,26 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "App made by",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "App made by",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
             ),
-            const Text(
-              "Andrew Schmidt",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+          ),
+          const Text(
+            "Andrew Schmidt",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
             ),
-            RichText(
-              text: TextSpan(
+          ),
+          RichText(
+            text: TextSpan(
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     var url = Uri.parse('https://www.google.com');
@@ -73,12 +73,10 @@ class SplashPage extends StatelessWidget {
                   color: Colors.lightBlue,
                   fontSize: 12,
                   decoration: TextDecoration.underline,
-                )
-              ),
-            )
-          ],
-        )
-      ),
+                )),
+          )
+        ],
+      )),
     );
   }
 }
@@ -96,39 +94,40 @@ class NewHomePageState extends State<NewHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: MasonryGridView.count(
-        crossAxisCount: 4,        
+        crossAxisCount: 2,
+        itemCount: 20,
+        reverse: true,
+        padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           var rng = Random();
-          return testNote(true, 'something', rng.nextDouble() * 400 + 100);
+          return testNote(true, 'something', rng.nextDouble() * 300 + 150);
         },
-        ),
+      ),
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
-        height: 80,
-        elevation: 0,
-        color: Colors.black,
-        child: Row(
-          children: [
-            const Text(
-              "CATEGORY NAME",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold
+          height: 80,
+          elevation: 0,
+          color: Colors.black,
+          child: Row(
+            children: [
+              const Text(
+                "CATEGORY NAME",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
-            const Spacer(),
-            FloatingActionButton(
-              onPressed: () {
-                // Add your onPressed code here!
-              },
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white,
-              child: const Icon(Icons.add),
-            ),
-          ],
-        )
-      ),
+              const Spacer(),
+              FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed code here!
+                },
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                child: const Icon(Icons.add),
+              ),
+            ],
+          )),
     );
   }
 }
@@ -145,35 +144,29 @@ class oldListView extends StatelessWidget {
       children: [
         Row(
           children: [
-    
             /*
               PROBLEM
                 left and right column should have different heights but are the same,
                 having the same bounds is ok if they both align to the bottom, but
                 the smaller one aligns centered :(
             */
-    
+
             //left column
             Expanded(
-              child: Column(
-                verticalDirection: VerticalDirection.up,
-                children: [
-                  testNote(true, "test1", 100),
-                  testNote(false, "test3", 150),
-                  testNote(false, "test4", 150)
-                ],
-              )
-            ),
+                child: Column(
+              verticalDirection: VerticalDirection.up,
+              children: [
+                testNote(true, "test1", 100),
+                testNote(false, "test3", 150),
+                testNote(false, "test4", 150)
+              ],
+            )),
             //right column
             Expanded(
-              child: Column(
-                verticalDirection: VerticalDirection.up,
-                
-                children: [
-                  testNote(true, "test2", 200)
-                ],
-              )
-            ),
+                child: Column(
+              verticalDirection: VerticalDirection.up,
+              children: [testNote(true, "test2", 200)],
+            )),
           ],
         )
       ],
@@ -206,38 +199,72 @@ Row testNoteElement(bool drawIcon, String text) {
     children: [
       if (drawIcon) ...{
         Container(
-        margin: const EdgeInsets.only(right: 10),
-        child: const Icon(Icons.text_fields_rounded, color: Colors.white),
+          margin: const EdgeInsets.only(right: 5),
+          child: const Icon(Icons.text_fields_rounded, color: Colors.white),
         ),
       },
       RichText(
-        text: TextSpan(
-          text: text,
-          style: const TextStyle(
-            //color: Colors.black,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 16
-          )
-        )
-      )
+          text: TextSpan(
+              text: text,
+              style: const TextStyle(
+                  //color: Colors.black,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16)))
+    ],
+  );
+}
+
+Row titleNoteElement(String text) {
+  return Row(
+    children: [
+      Expanded(
+          //fit: FlexFit.loose,
+          child: RichText(
+              text: TextSpan(
+                  text: text,
+                  style: const TextStyle(
+                    //color: Colors.black,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ))))
+    ],
+  );
+}
+
+Row textNoteElement(String text) {
+  return Row(
+    children: [
+      Container(
+        margin: const EdgeInsets.only(right: 5),
+        child: const Icon(Icons.short_text_rounded, color: Colors.white),
+      ),
+      RichText(
+          text: TextSpan(
+              text: text,
+              style: const TextStyle(
+                  //color: Colors.black,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16)))
     ],
   );
 }
 
 Container testNote(bool drawIcon, String text, double noteHeight) {
   return //note
-    Container(
-      //outside
-      margin: const EdgeInsets.all(10),
-      //inside
-      padding: const EdgeInsets.all(10),
-      height: noteHeight,
-      //width: 150,
-      //trying to align notes in row to bottom, not working well so far
-      //alignment: Alignment.topRight,
+      Container(
+    //outside
+    margin: const EdgeInsets.all(5),
+    //inside
+    padding: const EdgeInsets.all(5),
+    height: noteHeight,
+    //width: 150,
+    //trying to align notes in row to bottom, not working well so far
+    //alignment: Alignment.topRight,
 
-      /*
+    /*
       SOLID WHITE BG
       decoration: BoxDecoration(
         color: Colors.white,
@@ -245,21 +272,21 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
         borderRadius: const BorderRadius.all(Radius.circular(5)),
       ),
       */
-      decoration: BoxDecoration(
-        color: Colors.black,
-        border: Border.all(width: 2, color: Colors.white),
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Column(
-        children: [
-          //note elements
-          testNoteElement(drawIcon, text),
-          testNoteElement(drawIcon, text),
-          testNoteElement(drawIcon, text),
-
-        ],
-      ),
-    );
+    decoration: BoxDecoration(
+      color: Colors.black,
+      border: Border.all(width: 2, color: Colors.white),
+      //border: Border.all(width: 2, color: Color(Random().nextInt(0xffffffff))),
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+    ),
+    child: Column(
+      children: [
+        //note elements
+        titleNoteElement('Title Note Element'),
+        textNoteElement(text),
+        textNoteElement(text),
+      ],
+    ),
+  );
 }
 
 /*
