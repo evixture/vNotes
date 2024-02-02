@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: 'Flutter Demo',
+      title: 'vNotes',
 
       //color theme configured here, reorganize colors when done with design
       theme: ThemeData(
@@ -25,8 +25,6 @@ class MainApp extends StatelessWidget {
 
       home: const NewHomePage(),
       //home: const SplashPage(),
-
-      //home: const HomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -44,6 +42,14 @@ class SplashPage extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          RichText(
+              text: const TextSpan(
+                  text: "vNotes",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 42,
+                  ))),
           const Text(
             "App made by",
             style: TextStyle(
