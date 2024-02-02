@@ -108,7 +108,7 @@ class NewHomePageState extends State<NewHomePage> {
           //re-enters the screen
           var rng = Random();
           double rngHeight = rng.nextDouble() * 300 + 150;
-          return testNote(true, '${index}, ${rngHeight.round()}', rngHeight);
+          return testNote(true, '$index, ${rngHeight.round()}', rngHeight);
         },
       ),
       //bottom app bar
@@ -139,68 +139,6 @@ class NewHomePageState extends State<NewHomePage> {
     );
   }
 }
-
-class oldListView extends StatelessWidget {
-  const oldListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      reverse: true,
-      children: [
-        Row(
-          children: [
-            /*
-              PROBLEM
-                left and right column should have different heights but are the same,
-                having the same bounds is ok if they both align to the bottom, but
-                the smaller one aligns centered :(
-            */
-
-            //left column
-            Expanded(
-                child: Column(
-              verticalDirection: VerticalDirection.up,
-              children: [
-                testNote(true, "test1", 100),
-                testNote(false, "test3", 150),
-                testNote(false, "test4", 150)
-              ],
-            )),
-            //right column
-            Expanded(
-                child: Column(
-              verticalDirection: VerticalDirection.up,
-              children: [testNote(true, "test2", 200)],
-            )),
-          ],
-        )
-      ],
-    );
-  }
-}
-
-/*
-const Text(
-                "CATEGORY NAME",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-
-
-
-  //right column
-              Expanded(
-                  child: Column(
-                verticalDirection: VerticalDirection.up,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [testNote("test2")],
-              )),
-*/
 
 Row testNoteElement(bool drawIcon, String text) {
   return Row(
@@ -295,108 +233,4 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
       ],
     ),
   );
-}
-
-/*
-  Widget build(BuildContext context) {
-      return Scaffold(
-        backgroundColor: Colors.black,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
-          child: const Icon(Icons.add),
-        ),
-      );
-    }
-
-  //note
-  Container(
-    //outside
-    margin: EdgeInsets.all(15),
-    //inside
-    padding: EdgeInsets.all(15),
-    height: 400,
-    decoration: BoxDecoration(
-      color: Colors.white,
-      border: Border.all(width: 0, color: Colors.white),
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
-    child: Column(
-      children: [
-        //note elements
-        Row(
-          children: [
-            Icon(Icons.text_fields_rounded),
-            RichText(
-                text: TextSpan(
-                    text: "NOTE TEXT",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    )))
-          ],
-        ),
-      ],
-    ),
-  ),
-
-*/
-
-//---------------
-//
-//  OLD STUFF
-//
-//---------------
-
-class HomePage extends StatefulWidget {
-  final String title;
-
-  const HomePage({super.key, required this.title});
-
-  @override
-  State<HomePage> createState() => HomePageState();
-}
-
-class HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
 }
