@@ -1,0 +1,17 @@
+{
+  "name": "categoryName",
+  "notes":
+  {
+    "note":
+    [
+      {
+        "type": "title",
+        "data": "title text"
+      },
+      {
+        "type": "text",
+        "text": "this is text"
+      }
+    ]
+  }
+}

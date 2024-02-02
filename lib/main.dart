@@ -1,3 +1,6 @@
+import 'noteElement.dart';
+import 'note.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -115,7 +118,8 @@ class NewHomePageState extends State<NewHomePage> {
           //re-enters the screen
           var rng = Random();
           double rngHeight = rng.nextDouble() * 300 + 150;
-          return testNote(true, '$index, ${rngHeight.round()}', rngHeight);
+          //return testNote(true, '$index, ${rngHeight.round()}', rngHeight);
+          return Note('Note Title Text', rngHeight).get();
         },
       ),
       //bottom app bar
@@ -168,42 +172,8 @@ Row testNoteElement(bool drawIcon, String text) {
   );
 }
 
-Row titleNoteElement(String text) {
-  return Row(
-    children: [
-      Expanded(
-          //fit: FlexFit.loose,
-          child: RichText(
-              text: TextSpan(
-                  text: text,
-                  style: const TextStyle(
-                    //color: Colors.black,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ))))
-    ],
-  );
-}
 
-Row textNoteElement(String text) {
-  return Row(
-    children: [
-      Container(
-        margin: const EdgeInsets.only(right: 5),
-        child: const Icon(Icons.short_text_rounded, color: Colors.white),
-      ),
-      RichText(
-          text: TextSpan(
-              text: text,
-              style: const TextStyle(
-                  //color: Colors.black,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16)))
-    ],
-  );
-}
+
 
 Container testNote(bool drawIcon, String text, double noteHeight) {
   return //note
@@ -234,7 +204,7 @@ Container testNote(bool drawIcon, String text, double noteHeight) {
     child: Column(
       children: [
         //note elements
-        titleNoteElement('Title Note Element'),
+        TitleElement('Title Text').get(),
         textNoteElement(text),
         textNoteElement(text),
       ],
