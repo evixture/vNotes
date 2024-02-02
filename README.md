@@ -1,4 +1,4 @@
-# note_taking_app
+# vNotes
 
 A new Flutter project.
 
