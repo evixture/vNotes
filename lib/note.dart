@@ -61,7 +61,7 @@ class Note extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       padding: const EdgeInsets.all(5),
       //doesnt resize to fit contents
-      height: 300,
+      //height: 300,
 
       /*
       SOLID WHITE BG

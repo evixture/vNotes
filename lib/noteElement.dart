@@ -8,7 +8,7 @@ class BasicElement extends StatelessWidget {
   // }
 
   @override
-  Widget build(BuildContext context) {
+  Container build(BuildContext context) {
     return Container();
   }
 }
@@ -40,23 +40,25 @@ class TitleElement extends BasicElement {
   TitleElement(this.text, {super.key}); //takes in json??
 
   @override
-  Widget build(BuildContext context) {
+  Container build(BuildContext context) {
 //  Widget get() {
     print("-> called titleElement Build");
-    return Row(
-      children: [
-        Expanded(
-            //fit: FlexFit.loose,
-            child: RichText(
-                text: TextSpan(
-                    text: text,
-                    style: const TextStyle(
-                      //color: Colors.black,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ))))
-      ],
+    return Container(
+      child: Row(
+        children: [
+          Expanded(
+              //fit: FlexFit.loose,
+              child: RichText(
+                  text: TextSpan(
+                      text: text,
+                      style: const TextStyle(
+                        //color: Colors.black,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ))))
+        ],
+      ),
     );
   }
 }
