@@ -1,5 +1,6 @@
 import 'noteElement.dart';
 import 'note.dart';
+import 'category.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:math';
 import 'package:yaml/yaml.dart';
+
+/*
+  MASON TIPS
+    material you
+
+ */
 
 void main() {
   runApp(const MainApp());
@@ -99,9 +106,48 @@ class NewHomePage extends StatefulWidget {
 }
 
 class NewHomePageState extends State<NewHomePage> {
+  Category cat = Category();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
+      body: Category(),
+      //bottom app bar
+      bottomNavigationBar: BottomAppBar(
+          height: 80,
+          elevation: 0,
+          color: Colors.black,
+          child: Row(
+            children: [
+              const Text(
+                "CATEGORY NAME",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Spacer(),
+              FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed code here!
+                },
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                child: const Icon(Icons.add),
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+/*
+
+print('new home page build');
+    return Category().get();
+
+return Scaffold(
       backgroundColor: Colors.black,
       body: MasonryGridView.count(
         crossAxisCount: 2,
@@ -148,5 +194,5 @@ class NewHomePageState extends State<NewHomePage> {
             ],
           )),
     );
-  }
-}
+
+*/

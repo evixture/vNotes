@@ -21,26 +21,43 @@ Row textNoteElement(String text) {
   );
 }
 
-class Note
-{
+class Note extends StatelessWidget {
   List<BasicElement> eList = [];
   String debugText = '';
-  double noteHeight;
+  double noteHeight = 0;
 
-  Note(this.debugText, this.noteHeight)
-  {
-    eList.add(TitleElement("Title from Note"));
-    eList.add(TitleElement("Title from Note"));
+/*
+  Note(this.debugText, this.noteHeight) {
+      eList.add(TitleElement("Title from Note"));
+      eList.add(TitleElement("Title from Note"));
+    }
+*/
+
+  Note(dynamic jsonNote) {
+    //eList.add(TitleElement("Title from Note"));
+    //eList.add(TitleElement("Title from Note"));
+    //print(jsonNote['type']);
+
+    if (jsonNote['type'] == 'title') {
+      eList.add(TitleElement(jsonNote['data']));
+    }
   }
 
-  Container get()
-  {
+  jsonNote(dynamic jsonNote) {
+    //print(jsonNote);
+
+    noteHeight = 150;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //Widget get() {
     return Container(
-    margin: const EdgeInsets.all(5),
-    padding: const EdgeInsets.all(5),
-    height: noteHeight,
-    
-    /*
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
+      height: noteHeight,
+
+      /*
       SOLID WHITE BG
       decoration: BoxDecoration(
         color: Colors.white,
@@ -48,19 +65,19 @@ class Note
         borderRadius: const BorderRadius.all(Radius.circular(5)),
       ),
       */
-    decoration: BoxDecoration(
-      color: Colors.black,
-      border: Border.all(width: 2, color: Colors.white),
-      //border: Border.all(width: 2, color: Color(Random().nextInt(0xffffffff))),
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-    ),
-    child: Column(
-      children: [
-        //note elements
-        for (final element in eList) ...{ element.get() }
-      ],
-    ),
-  );
+      decoration: BoxDecoration(
+        color: Colors.black,
+        border: Border.all(width: 2, color: Colors.white),
+        //border: Border.all(width: 2, color: Color(Random().nextInt(0xffffffff))),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Column(
+        children: [
+          //note elements
+          for (final element in eList) ...{element.get()}
+        ],
+      ),
+    );
   }
 }
 

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-class BasicElement
-{
+class BasicElement extends StatelessWidget {
   const BasicElement();
 
-  Container get()
-  {
+  Widget get() {
+    return Container();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container();
   }
 }
@@ -31,33 +34,28 @@ Row titleNoteElement(String text) {
 
 */
 
-class TitleElement extends BasicElement
-{
+class TitleElement extends BasicElement {
   String text = '';
 
-  TitleElement(this.text);//takes in json??
+  TitleElement(this.text); //takes in json??
 
   @override
-  Container get()
-  {
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-          //fit: FlexFit.loose,
-          child: RichText(
-            text: TextSpan(
-            text: text,
-              style: const TextStyle(
-                //color: Colors.black,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              )
-            )
-          )
-        )
+  Widget build(BuildContext context) {
+//  Widget get() {
+    return Row(
+      children: [
+        Expanded(
+            //fit: FlexFit.loose,
+            child: RichText(
+                text: TextSpan(
+                    text: text,
+                    style: const TextStyle(
+                      //color: Colors.black,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ))))
       ],
-    ),
-  );  }
+    );
+  }
 }
