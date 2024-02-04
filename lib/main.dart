@@ -101,13 +101,11 @@ class NewHomePage extends StatefulWidget {
 }
 
 class NewHomePageState extends State<NewHomePage> {
-  //Category cat = Category();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Category(),
+      body: const Category(),
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
           height: 80,
@@ -116,6 +114,7 @@ class NewHomePageState extends State<NewHomePage> {
           child: Row(
             children: [
               const Text(
+                //figure out how to grab from category
                 "cat.catName",
                 style: TextStyle(
                     color: Colors.white,
@@ -136,58 +135,3 @@ class NewHomePageState extends State<NewHomePage> {
     );
   }
 }
-
-/*
-
-print('new home page build');
-    return Category().get();
-
-return Scaffold(
-      backgroundColor: Colors.black,
-      body: MasonryGridView.count(
-        crossAxisCount: 2,
-        itemCount: 15,
-        reverse: true,
-        padding: EdgeInsets.zero,
-        //addAutomaticKeepAlives: false,
-        //clipBehavior: Clip.antiAlias,
-        //addRepaintBoundaries: false,
-        itemBuilder: (context, index) {
-          //item builder is called whenever an item is on screen
-          //this is likely what is causing the inconsistent ordering
-          //because random is being called every time an item
-          //re-enters the screen
-          var rng = Random();
-          double rngHeight = rng.nextDouble() * 300 + 150;
-          //return testNote(true, '$index, ${rngHeight.round()}', rngHeight);
-          return Note('Note Title Text', rngHeight).get();
-        },
-      ),
-      //bottom app bar
-      bottomNavigationBar: BottomAppBar(
-          height: 80,
-          elevation: 0,
-          color: Colors.black,
-          child: Row(
-            children: [
-              const Text(
-                "CATEGORY NAME",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
-              FloatingActionButton(
-                onPressed: () {
-                  // Add your onPressed code here!
-                },
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.add),
-              ),
-            ],
-          )),
-    );
-
-*/
