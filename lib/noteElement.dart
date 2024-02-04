@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BasicElement extends StatelessWidget {
-  const BasicElement();
+  const BasicElement({super.key});
 
   Widget get() {
     return Container();
@@ -37,7 +37,7 @@ Row titleNoteElement(String text) {
 class TitleElement extends BasicElement {
   String text = '';
 
-  TitleElement(this.text); //takes in json??
+  TitleElement(this.text, {super.key}); //takes in json??
 
   @override
   Widget build(BuildContext context) {

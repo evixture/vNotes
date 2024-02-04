@@ -1,6 +1,7 @@
 import 'noteElement.dart';
 import 'package:flutter/material.dart';
 
+/*
 //eventually remove once json works
 Row textNoteElement(String text) {
   return Row(
@@ -20,6 +21,7 @@ Row textNoteElement(String text) {
     ],
   );
 }
+*/
 
 class Note extends StatelessWidget {
   List<BasicElement> eList = [];
@@ -33,7 +35,7 @@ class Note extends StatelessWidget {
     }
 */
 
-  Note(dynamic jsonNote) {
+  Note(dynamic jsonNote, {super.key}) {
     //eList.add(TitleElement("Title from Note"));
     //eList.add(TitleElement("Title from Note"));
     //print(jsonNote['type']);

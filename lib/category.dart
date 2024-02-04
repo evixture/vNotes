@@ -32,7 +32,7 @@ class Category extends StatelessWidget {
   List<Note> noteList = [];
   String catName = '';
 
-  Category({Key? key}) : super(key: key) {
+  Category({super.key}) {
     readJSON('data/notes.json');
   }
 
@@ -49,6 +49,7 @@ class Category extends StatelessWidget {
       //print("noteData in category : $noteData");
       noteList.add(Note(noteData));
     }
+    //print(noteList);
   }
 
   @override
@@ -60,8 +61,8 @@ class Category extends StatelessWidget {
       reverse: true,
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        //print("please work");
-        print('itembuilder note at ${index}');
+        //doesnt get called
+        print('itembuilder note at $index');
         return noteList[index];
       },
     );

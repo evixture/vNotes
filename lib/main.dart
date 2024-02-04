@@ -1,13 +1,8 @@
-import 'noteElement.dart';
-import 'note.dart';
 import 'category.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'dart:math';
-import 'package:yaml/yaml.dart';
 
 /*
   MASON TIPS
@@ -43,7 +38,7 @@ class MainApp extends StatelessWidget {
 //mostly complete, need to figure out how to make it
 //show up only at the start when launching
 class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +101,7 @@ class NewHomePage extends StatefulWidget {
 }
 
 class NewHomePageState extends State<NewHomePage> {
-  Category cat = Category();
+  //Category cat = Category();
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +116,7 @@ class NewHomePageState extends State<NewHomePage> {
           child: Row(
             children: [
               const Text(
-                "CATEGORY NAME",
+                "cat.catName",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
