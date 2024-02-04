@@ -28,15 +28,22 @@ import 'note.dart';
 
  */
 
-class Category extends StatelessWidget {
+class Category extends StatefulWidget {
+  //constant variables if any
+
+  const Category({super.key});
+
+  @override
+  State<Category> createState() => _CategoryState();
+}
+
+class _CategoryState extends State<Category> {
+  //variables that change on update
   List<Note> noteList = [];
   String catName = '';
 
-  Category({super.key}) {
-    readJSON('data/notes.json');
-  }
-
   Future<void> readJSON(String path) async {
+    print("-> called readJSON");
     var resp = await rootBundle.loadString('data/notes.json');
     Map<String, dynamic> data = await json.decode(resp);
 
@@ -49,20 +56,39 @@ class Category extends StatelessWidget {
       //print("noteData in category : $noteData");
       noteList.add(Note(noteData));
     }
-    //print(noteList);
+    print('-> noteList from JSON: $noteList');
+
+    setState(() {
+      print('-> setState from JSON');
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    print("-> called initState");
+
+    super.initState();
+    setState(() {
+      print("-> called setState");
+      readJSON('data/notes.json');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    //Widget get() {
+    print("-> called category Build");
+    print("-> $noteList");
     return MasonryGridView.count(
       crossAxisCount: 2,
       itemCount: noteList.length,
       reverse: true,
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        //doesnt get called
-        print('itembuilder note at $index');
+        //gets called before readjson finishes and doesnt get called again
+        print('-> itembuilder note at $index');
+        print('-> note ${noteList[index]}');
         return noteList[index];
       },
     );

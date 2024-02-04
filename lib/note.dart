@@ -43,6 +43,9 @@ class Note extends StatelessWidget {
     if (jsonNote['type'] == 'title') {
       eList.add(TitleElement(jsonNote['data']));
     }
+
+    //eList.add(TitleElement("TITLE ELEMENT"));
+    print("-> added note title to eList");
   }
 
   jsonNote(dynamic jsonNote) {
@@ -53,11 +56,12 @@ class Note extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Widget get() {
+    print("-> called note Build");
     return Container(
       margin: const EdgeInsets.all(5),
       padding: const EdgeInsets.all(5),
-      height: noteHeight,
+      //doesnt resize to fit contents
+      height: 300,
 
       /*
       SOLID WHITE BG
@@ -76,7 +80,8 @@ class Note extends StatelessWidget {
       child: Column(
         children: [
           //note elements
-          for (final element in eList) ...{element.get()}
+          for (final element in eList) ...{element}
+          //TitleElement("HARD CODE")
         ],
       ),
     );

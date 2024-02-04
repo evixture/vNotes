@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class BasicElement extends StatelessWidget {
   const BasicElement({super.key});
 
-  Widget get() {
-    return Container();
-  }
+  // Widget get() {
+  //   return Container();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +42,7 @@ class TitleElement extends BasicElement {
   @override
   Widget build(BuildContext context) {
 //  Widget get() {
+    print("-> called titleElement Build");
     return Row(
       children: [
         Expanded(
