@@ -7,8 +7,16 @@ class Note extends StatelessWidget {
   double noteHeight = 0;
 
   Note(dynamic jsonNote, {super.key}) {
-    if (jsonNote['type'] == 'title') {
-      eList.add(TitleElement(jsonNote['data']));
+    for (final element in jsonNote) {
+      //print('-> $element');
+
+      //eventually make into a switch
+      if (element['type'] == 'title') {
+        eList.add(TitleElement(element['data']));
+      }
+      if (element['type'] == 'text') {
+        eList.add(TextElement(element['data']));
+      }
     }
   }
 

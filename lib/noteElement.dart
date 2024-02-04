@@ -36,3 +36,31 @@ class TitleElement extends BasicElement {
     );
   }
 }
+
+class TextElement extends BasicElement {
+  String text = '';
+
+  TextElement(this.text, {super.key});
+
+  @override
+  Container build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 5),
+      child: Row(
+        children: [
+          Expanded(
+              //fit: FlexFit.loose,
+              child: RichText(
+                  text: TextSpan(
+                      text: text,
+                      style: const TextStyle(
+                        //color: Colors.black,
+                        color: Colors.white,
+                        //fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ))))
+        ],
+      ),
+    );
+  }
+}

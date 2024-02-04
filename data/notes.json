@@ -5,11 +5,11 @@
     [
       {
         "type": "title",
-        "data": "title text1"
+        "data": "This is a long title to see if things wrap!"
       },
       {
         "type": "text",
-        "text": "this is text1"
+        "data": "this is text1"
       }
     ],
     [
@@ -19,7 +19,27 @@
       },
       {
         "type": "text",
-        "text": "this is text2"
+        "data": "this is text2"
+      }
+    ],
+    [
+      {
+        "type": "title",
+        "data": "This is a long title to see if things wrap!"
+      },
+      {
+        "type": "text",
+        "data": "this is text1"
+      }
+    ],
+    [
+      {
+        "type": "title",
+        "data": "This is a long title to see if things wrap!"
+      },
+      {
+        "type": "text",
+        "data": "this is text1"
       }
     ]
   ]

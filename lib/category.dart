@@ -24,11 +24,13 @@ class _CategoryState extends State<Category> {
     Map<String, dynamic> data = await json.decode(resp);
 
     catName = data['name'];
-    //need to add [0] to the end for some reason, should figure
-    //out why its like this later
-    var jsonNoteList = data['notes'][0];
+
+    //list of notes
+    var jsonNoteList = data['notes'];
+    //print('-> jsonNote: $jsonNoteList');
 
     for (final noteData in jsonNoteList) {
+      //print('-> adding note with $noteData');
       noteList.add(Note(noteData));
     }
 
