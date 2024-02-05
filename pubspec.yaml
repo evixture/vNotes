@@ -40,6 +40,8 @@ dependencies:
   yaml: ^3.1.2
   flutter_launcher_icons: ^0.13.1
 
+#https://pub.dev/packages/flutter_launcher_icons
+#https://github.com/fluttercommunity/flutter_launcher_icons/blob/master/example/default_example/pubspec.yaml
 flutter_launcher_icons:
   image_path: "data/vNotes Icon 2-5 noBG.png"
   web:
