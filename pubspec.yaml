@@ -40,6 +40,16 @@ dependencies:
   yaml: ^3.1.2
   flutter_launcher_icons: ^0.13.1
 
+flutter_launcher_icons:
+  image_path: "data/vNotes Icon 2-5 noBG.png"
+  web:
+    generate: true
+    image_path: "data/vNotes Icon 2-5 noBG.png"
+    background_color: "#FFFFFF"
+    theme_color: "#FFFFFF"
+  windows:
+    generate: true
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
