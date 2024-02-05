@@ -7,7 +7,9 @@ import 'package:url_launcher/url_launcher.dart';
 /*
   MASON TIPS
     material you
-
+    have link in settings to github
+    and link to thulian yt
+    
  */
 
 void main() {
