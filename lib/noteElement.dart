@@ -5,18 +5,19 @@ class BasicElement extends StatelessWidget {
   const BasicElement({super.key});
 
   @override
-  Container build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container();
   }
 }
 
+// ignore: must_be_immutable
 class TitleElement extends BasicElement {
   String text = '';
 
   TitleElement(this.text, {super.key});
 
   @override
-  Container build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       child: Row(
         children: [
@@ -37,13 +38,14 @@ class TitleElement extends BasicElement {
   }
 }
 
+// ignore: must_be_immutable
 class TextElement extends BasicElement {
   String text = '';
 
   TextElement(this.text, {super.key});
 
   @override
-  Container build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 5),
       child: Row(

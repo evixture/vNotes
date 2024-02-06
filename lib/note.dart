@@ -1,6 +1,7 @@
 import 'noteElement.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Note extends StatelessWidget {
   List<BasicElement> eList = [];
   String debugText = '';

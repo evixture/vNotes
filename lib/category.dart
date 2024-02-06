@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yaml/yaml.dart';
+import 'dart:io';
 
 import 'note.dart';
 
@@ -38,6 +39,10 @@ class _CategoryState extends State<Category> {
 
     //update with new info from file
     setState(() {});
+  }
+
+  void readYAML(String path) {
+    File f = File(path);
   }
 
   @override
