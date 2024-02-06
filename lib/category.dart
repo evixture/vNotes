@@ -22,18 +22,13 @@ class _CategoryState extends State<Category> {
   List<Note> noteList = [];
   String catName = '';
 
-  Future<void> readJSON(String path) async {
-    var resp = await rootBundle.loadString('data/notes.json');
-    Map<String, dynamic> data = await json.decode(resp);
+  Future<void> readYAML(String path) async {
+    var resp = await rootBundle.loadString(path);
+    YamlMap yaml = loadYaml(resp);
 
-    catName = data['name'];
-
-    //list of notes
-    var jsonNoteList = data['notes'];
-    //print('-> jsonNote: $jsonNoteList');
-
-    for (final noteData in jsonNoteList) {
-      //print('-> adding note with $noteData');
+    catName = yaml['name'];
+    var yamlNoteList = yaml['notes'];
+    for (final noteData in yamlNoteList) {
       noteList.add(Note(noteData));
     }
 
@@ -41,15 +36,12 @@ class _CategoryState extends State<Category> {
     setState(() {});
   }
 
-  void readYAML(String path) {
-    File f = File(path);
-  }
-
   @override
   void initState() {
     super.initState();
     //readJSON calls set state when finished
-    readJSON('data/notes.json');
+    //readJSON('data/notes.json');
+    readYAML('data/notes.yaml');
   }
 
   @override

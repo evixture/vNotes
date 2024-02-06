@@ -7,9 +7,9 @@ class Note extends StatelessWidget {
   String debugText = '';
   double noteHeight = 0;
 
-  Note(dynamic jsonNote, {super.key}) {
-    for (final element in jsonNote) {
-      //print('-> $element');
+  Note(dynamic yamlNote, {super.key}) {
+    for (final element in yamlNote) {
+      print('-> $element');
 
       //eventually make into a switch
       if (element['type'] == 'title') {
