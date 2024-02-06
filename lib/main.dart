@@ -1,4 +1,5 @@
-import 'page.dart';
+//import 'page.dart';
+import 'category.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -106,6 +107,6 @@ class NewHomePage extends StatefulWidget {
 class NewHomePageState extends State<NewHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const MainPage();
+    return const Category();
   }
 }
