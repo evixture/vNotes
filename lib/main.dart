@@ -1,4 +1,4 @@
-import 'category.dart';
+import 'page.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +42,7 @@ class MainApp extends StatelessWidget {
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
+  //splash page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,35 +106,6 @@ class NewHomePage extends StatefulWidget {
 class NewHomePageState extends State<NewHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: const Category(),
-      //bottom app bar
-      bottomNavigationBar: BottomAppBar(
-          height: 80,
-          elevation: 0,
-          color: Colors.black,
-          child: Row(
-            children: [
-              const Text(
-                //figure out how to grab from category
-                "cat.catName",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
-              FloatingActionButton(
-                onPressed: () {
-                  // Add your onPressed code here!
-                },
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.add),
-              ),
-            ],
-          )),
-    );
+    return const MainPage();
   }
 }

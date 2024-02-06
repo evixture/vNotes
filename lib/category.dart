@@ -16,7 +16,8 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  //variables that change on update
+  //variables that change on update, info is persistent
+  //when set state is called, this class is redrawn
   List<Note> noteList = [];
   String catName = '';
 
@@ -35,15 +36,15 @@ class _CategoryState extends State<Category> {
       noteList.add(Note(noteData));
     }
 
+    //update with new info from file
     setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      readJSON('data/notes.json');
-    });
+    //readJSON calls set state when finished
+    readJSON('data/notes.json');
   }
 
   @override
@@ -53,6 +54,8 @@ class _CategoryState extends State<Category> {
       itemCount: noteList.length,
       reverse: true,
       padding: EdgeInsets.zero,
+      //padding: const EdgeInsets.all(5),
+
       itemBuilder: (context, index) {
         return noteList[index];
       },
