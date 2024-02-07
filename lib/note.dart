@@ -1,16 +1,17 @@
 import 'noteElement.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class Note extends StatelessWidget {
+//idea - class that stores main data for note so
+//switching between list notes and focused notes,
+//as well as saving data to yaml is easier
+class NoteCoreData {
+  dynamic yamlInput = '';
+
   List<BasicElement> eList = [];
-  String debugText = '';
-  double noteHeight = 0;
+  //other vars like color and timestamp once added
 
-  Note(dynamic yamlNote, {super.key}) {
-    for (final element in yamlNote) {
-      print('-> $element');
-
+  NoteCoreData(this.yamlInput) {
+    for (final element in yamlInput) {
       //eventually make into a switch
       if (element['type'] == 'title') {
         eList.add(TitleElement(element['data']));
@@ -20,10 +21,13 @@ class Note extends StatelessWidget {
       }
     }
   }
+}
 
-  jsonNote(dynamic jsonNote) {
-    noteHeight = 150;
-  }
+// ignore: must_be_immutable
+class Note extends StatelessWidget {
+  NoteCoreData ncd;
+
+  Note(this.ncd, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,7 @@ class Note extends StatelessWidget {
               child: Column(
                 children: [
                   //note elements
-                  for (final element in eList) ...{element}
+                  for (final element in ncd.eList) ...{element}
                 ],
               ),
             ),

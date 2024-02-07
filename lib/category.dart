@@ -19,7 +19,7 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   //variables that change on update, info is persistent
   //when set state is called, this class is redrawn
-  List<Note> noteList = [];
+  List<NoteCoreData> ncdList = [];
   String catName = '';
 
   Future<void> readYAML(String path) async {
@@ -29,7 +29,7 @@ class _CategoryState extends State<Category> {
     catName = yaml['name'];
     var yamlNoteList = yaml['notes'];
     for (final noteData in yamlNoteList) {
-      noteList.add(Note(noteData));
+      ncdList.add(NoteCoreData(noteData));
     }
 
     //update with new info from file
@@ -39,8 +39,6 @@ class _CategoryState extends State<Category> {
   @override
   void initState() {
     super.initState();
-    //readJSON calls set state when finished
-    //readJSON('data/notes.json');
     readYAML('data/notes.yaml');
   }
 
@@ -50,13 +48,13 @@ class _CategoryState extends State<Category> {
       backgroundColor: Colors.black,
       body: MasonryGridView.count(
         crossAxisCount: 2,
-        itemCount: noteList.length,
+        itemCount: ncdList.length,
         reverse: true,
         padding: EdgeInsets.zero,
         //padding: const EdgeInsets.all(5),
 
         itemBuilder: (context, index) {
-          return noteList[index];
+          return Note(ncdList[index]);
         },
       ),
       //bottom app bar
