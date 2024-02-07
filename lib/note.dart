@@ -8,10 +8,16 @@ class NoteCoreData {
   dynamic yamlInput = '';
 
   List<BasicElement> eList = [];
+  String lastEdit = '';
   //other vars like color and timestamp once added
 
   NoteCoreData(this.yamlInput) {
-    for (final element in yamlInput) {
+    //https://api.flutter.dev/flutter/dart-core/DateTime-class.html
+    //lastEdit = DateTime.parse(yamlInput['lastEdit']);
+    //can parse lastEdit string with DateTime to do time stuff
+    lastEdit = yamlInput['lastEdit'];
+
+    for (final element in yamlInput['elements']) {
       //eventually make into a switch
       if (element['type'] == 'title') {
         eList.add(TitleElement(element['data']));

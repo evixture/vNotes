@@ -1,9 +1,7 @@
 import 'package:flutter/services.dart';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yaml/yaml.dart';
-import 'dart:io';
 
 import 'note.dart';
 
@@ -28,6 +26,8 @@ class _CategoryState extends State<Category> {
 
     catName = yaml['name'];
     var yamlNoteList = yaml['notes'];
+    //print(yamlNoteList);
+
     for (final noteData in yamlNoteList) {
       ncdList.add(NoteCoreData(noteData));
     }
