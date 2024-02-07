@@ -54,7 +54,7 @@ class _CategoryState extends State<Category> {
         //padding: const EdgeInsets.all(5),
 
         itemBuilder: (context, index) {
-          return Note(ncdList[index]);
+          return ListedNote(ncdList[index]);
         },
       ),
       //bottom app bar
@@ -64,15 +64,11 @@ class _CategoryState extends State<Category> {
           color: Colors.black,
           child: Row(
             children: [
-              Text(
-                //figure out how to grab from category
-                catName,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: catName),
+                ),
               ),
-              const Spacer(),
               FloatingActionButton(
                 onPressed: () {
                   // Add your onPressed code here!
@@ -88,6 +84,15 @@ class _CategoryState extends State<Category> {
 }
 
 /* 
+
+Text(
+                //figure out how to grab from category
+                catName,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
 
 MasonryGridView.count(
       crossAxisCount: 2,

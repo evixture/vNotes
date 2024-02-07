@@ -30,10 +30,10 @@ class NoteCoreData {
 }
 
 // ignore: must_be_immutable
-class Note extends StatelessWidget {
+class ListedNote extends StatelessWidget {
   NoteCoreData ncd;
 
-  Note(this.ncd, {super.key});
+  ListedNote(this.ncd, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +69,20 @@ class Note extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FocusedNote extends StatefulWidget {
+  const FocusedNote({super.key});
+
+  @override
+  State<FocusedNote> createState() => _FocusedNoteState();
+}
+
+class _FocusedNoteState extends State<FocusedNote> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
 
