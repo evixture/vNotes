@@ -1,13 +1,13 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 
-class BasicElement extends StatelessWidget {
+abstract class BasicElement extends StatelessWidget {
   const BasicElement({super.key});
 
+  String toYaml();
+
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context);
 }
 
 // ignore: must_be_immutable
@@ -15,6 +15,11 @@ class TitleElement extends BasicElement {
   String text = '';
 
   TitleElement(this.text, {super.key});
+
+  @override
+  String toYaml() {
+    return "- type: title\ndata: $text";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +48,11 @@ class TextElement extends BasicElement {
   String text = '';
 
   TextElement(this.text, {super.key});
+
+  @override
+  String toYaml() {
+    return "- type: text\ndata: $text";
+  }
 
   @override
   Widget build(BuildContext context) {

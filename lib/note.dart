@@ -27,6 +27,14 @@ class NoteCoreData {
       }
     }
   }
+
+  String toYaml() {
+    String ret = "- lastEdit: ${DateTime.now()}\nelements:";
+    for (final el in eList) {
+      ret += el.toYaml();
+    }
+    return ret;
+  }
 }
 
 // ignore: must_be_immutable

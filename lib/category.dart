@@ -2,6 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yaml/yaml.dart';
+import 'package:yaml_writer/yaml_writer.dart';
+import 'dart:io';
 
 import 'note.dart';
 
@@ -40,10 +42,26 @@ class _CategoryState extends State<Category> {
     setState(() {});
   }
 
+  String toYaml() {
+    String ret = "---\nname: $catName\nnotes:";
+    for (final n in ncdList) {
+      ret += n.toYaml();
+    }
+    return ret;
+  }
+
   @override
   void initState() {
     super.initState();
     readYAML('data/notes.yaml');
+  }
+
+  void writeToYaml(String path) {
+    var yw = YamlWriter();
+    String yd = yw.write(toYaml());
+
+    File f = File(path);
+    f.writeAsStringSync(yd);
   }
 
   @override
@@ -76,6 +94,7 @@ class _CategoryState extends State<Category> {
                     catName = value;
                     textChanged = false;
                     print("saved to file");
+                    writeToYaml('data/notes.yaml');
                     //yamlUpdate();
                   },
                   // onEditingComplete: () {
@@ -92,6 +111,7 @@ class _CategoryState extends State<Category> {
                     if (textChanged) {
                       textChanged = false;
                       print("saved to file");
+                      writeToYaml('data/notes.yaml');
                       //yamlUpdate();
                     }
                   },
