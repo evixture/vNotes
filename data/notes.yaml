@@ -1,15 +1,14 @@
----
-name: categoryName
-notes:
-- lastEdit: '2023-07-20 20:18:04Z'
-  elements:
-  - type: title
-    data: This is a long title to see if things wrap!
-  - type: text
-    data: this is text1
-- lastEdit: '1969-07-20 20:18:04Z'
-  elements:
-  - type: title
-    data: Short Title!
-  - type: text
-    data: this is text1 and this one is rather long just to see what happens!
+name: 'please'
+notes: 
+  - lastEdit: '2024-02-08 09:29:07.249545'
+    elements: 
+      - type: 'title'
+        data: 'This is a long title to see if things wrap!'
+      - type: 'text'
+        data: 'this is text1'
+  - lastEdit: '2024-02-08 09:29:07.251601'
+    elements: 
+      - type: 'title'
+        data: 'Short Title!'
+      - type: 'text'
+        data: 'this is text1 and this one is rather long just to see what happens!'

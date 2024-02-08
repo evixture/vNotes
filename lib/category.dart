@@ -42,12 +42,18 @@ class _CategoryState extends State<Category> {
     setState(() {});
   }
 
-  String toYaml() {
-    String ret = "---\nname: $catName\nnotes:";
-    for (final n in ncdList) {
-      ret += n.toYaml();
-    }
-    return ret;
+  dynamic toYaml() {
+    // String ret = "---\nname: $catName\nnotes:";
+    // for (final n in ncdList) {
+    //   ret += n.toYaml();
+    // }
+    // return ret;
+    return {
+      'name': catName,
+      'notes': [
+        for (final n in ncdList) ...{n.toYaml()}
+      ]
+    };
   }
 
   @override
@@ -56,12 +62,20 @@ class _CategoryState extends State<Category> {
     readYAML('data/notes.yaml');
   }
 
+  /**
+   * IMPORTANT:
+   *  dart:io does not work on web
+   */
   void writeToYaml(String path) {
-    var yw = YamlWriter();
+    YamlWriter yw = YamlWriter();
     String yd = yw.write(toYaml());
 
-    File f = File(path);
-    f.writeAsStringSync(yd);
+    try {
+      File f = File(path);
+      f.writeAsStringSync(yd);
+    } catch (e) {
+      print("file error: ${e.toString()}");
+    }
   }
 
   @override
@@ -88,7 +102,7 @@ class _CategoryState extends State<Category> {
             children: [
               Expanded(
                 child: EditableText(
-                  controller: TextEditingController(text: "SOMETHING"),
+                  controller: TextEditingController(text: catName),
                   onSubmitted: (value) {
                     //print("submitted, $value");
                     catName = value;

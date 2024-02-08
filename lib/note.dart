@@ -28,12 +28,17 @@ class NoteCoreData {
     }
   }
 
-  String toYaml() {
-    String ret = "- lastEdit: ${DateTime.now()}\nelements:";
-    for (final el in eList) {
-      ret += el.toYaml();
-    }
-    return ret;
+  dynamic toYaml() {
+    // String ret = "- lastEdit: ${DateTime.now()}\nelements:";
+    // for (final el in eList) {
+    //   ret += el.toYaml();
+    // }
+    return {
+      'lastEdit': DateTime.now().toString(),
+      'elements': [
+        for (final el in eList) ...{el.toYaml()}
+      ]
+    };
   }
 }
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract class BasicElement extends StatelessWidget {
   const BasicElement({super.key});
 
-  String toYaml();
+  dynamic toYaml();
 
   @override
   Widget build(BuildContext context);
@@ -17,8 +17,8 @@ class TitleElement extends BasicElement {
   TitleElement(this.text, {super.key});
 
   @override
-  String toYaml() {
-    return "- type: title\ndata: $text";
+  dynamic toYaml() {
+    return {'type': 'title', 'data': '$text'};
   }
 
   @override
@@ -50,8 +50,8 @@ class TextElement extends BasicElement {
   TextElement(this.text, {super.key});
 
   @override
-  String toYaml() {
-    return "- type: text\ndata: $text";
+  dynamic toYaml() {
+    return {'type': 'text', 'data': '$text'};
   }
 
   @override
