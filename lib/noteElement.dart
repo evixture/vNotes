@@ -18,12 +18,12 @@ class TitleElement extends BasicElement {
 
   @override
   dynamic toYaml() {
-    return {'type': 'title', 'data': '$text'};
+    return {'type': 'title', 'data': text};
   }
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder(color: Colors.red);
+    return const Placeholder(color: Colors.red);
   }
 
   @override
@@ -39,6 +39,7 @@ class TitleElement extends BasicElement {
             )));
   }
 
+  @override
   Widget getFocused(BuildContext context) {
     return RichText(
         text: TextSpan(
@@ -60,7 +61,7 @@ class TextElement extends BasicElement {
 
   @override
   dynamic toYaml() {
-    return {'type': 'text', 'data': '$text'};
+    return {'type': 'text', 'data': text};
   }
 
   @override
@@ -81,6 +82,7 @@ class TextElement extends BasicElement {
             )));
   }
 
+  @override
   Widget getFocused(BuildContext context) {
     return RichText(
         text: TextSpan(

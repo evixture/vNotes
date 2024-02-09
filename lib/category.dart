@@ -62,13 +62,12 @@ class _CategoryState extends State<Category> {
     readYAML('data/notes.yaml');
   }
 
-  /**
-   * IMPORTANT:
-   *  dart:io does not work on web
-   */
+  //NOTE: dart:io does not work on web
   void writeToYaml(String path) {
+    print("1    something");
     YamlWriter yw = YamlWriter();
     String yd = yw.write(toYaml());
+    print("something");
 
     try {
       File f = File(path);
@@ -107,7 +106,7 @@ class _CategoryState extends State<Category> {
                     //print("submitted, $value");
                     catName = value;
                     textChanged = false;
-                    print("saved to file");
+                    //print("saved to file");
                     writeToYaml('data/notes.yaml');
                     //yamlUpdate();
                   },
@@ -124,7 +123,7 @@ class _CategoryState extends State<Category> {
 
                     if (textChanged) {
                       textChanged = false;
-                      print("saved to file");
+                      //print("saved to file");
                       writeToYaml('data/notes.yaml');
                       //yamlUpdate();
                     }
@@ -154,61 +153,3 @@ class _CategoryState extends State<Category> {
     );
   }
 }
-
-/* 
-
-Text(
-                //figure out how to grab from category
-                catName,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-
-MasonryGridView.count(
-      crossAxisCount: 2,
-      itemCount: noteList.length,
-      reverse: true,
-      padding: EdgeInsets.zero,
-      //padding: const EdgeInsets.all(5),
-
-      itemBuilder: (context, index) {
-        return noteList[index];
-      },
-    );
-
-
-Scaffold(
-      backgroundColor: Colors.black,
-      body: cat,
-      //bottom app bar
-      bottomNavigationBar: BottomAppBar(
-          height: 80,
-          elevation: 0,
-          color: Colors.black,
-          child: Row(
-            children: [
-              const Text(
-                //figure out how to grab from category
-                "TEMP",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
-              FloatingActionButton(
-                onPressed: () {
-                  // Add your onPressed code here!
-                },
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.add),
-              ),
-            ],
-          )),
-    );
-
-
-*/
