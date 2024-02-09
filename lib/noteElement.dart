@@ -84,14 +84,26 @@ class TextElement extends BasicElement {
 
   @override
   Widget getFocused(BuildContext context) {
-    return RichText(
-        text: TextSpan(
-            text: text,
-            style: const TextStyle(
-              //color: Colors.black,
-              color: Colors.white,
-              //fontWeight: FontWeight.bold,
-              fontSize: 20,
-            )));
+    return Row(
+      children: [
+        const SizedBox(
+          height: 30,
+          width: 30,
+          child: Icon(
+            Icons.short_text,
+            color: Colors.white,
+          ),
+        ),
+        RichText(
+            text: TextSpan(
+                text: text,
+                style: const TextStyle(
+                  //color: Colors.black,
+                  color: Colors.white,
+                  //fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ))),
+      ],
+    );
   }
 }
