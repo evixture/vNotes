@@ -6,8 +6,8 @@ abstract class BasicElement extends StatelessWidget {
 
   dynamic toYaml();
 
-  @override
-  Widget build(BuildContext context);
+  Widget getListed(BuildContext context);
+  Widget getFocused(BuildContext context);
 }
 
 // ignore: must_be_immutable
@@ -23,23 +23,32 @@ class TitleElement extends BasicElement {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-              //fit: FlexFit.loose,
-              child: RichText(
-                  text: TextSpan(
-                      text: text,
-                      style: const TextStyle(
-                        //color: Colors.black,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ))))
-        ],
-      ),
-    );
+    return Placeholder(color: Colors.red);
+  }
+
+  @override
+  Widget getListed(BuildContext context) {
+    return RichText(
+        text: TextSpan(
+            text: text,
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            )));
+  }
+
+  Widget getFocused(BuildContext context) {
+    return RichText(
+        text: TextSpan(
+            text: text,
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 32,
+            )));
   }
 }
 
@@ -56,23 +65,31 @@ class TextElement extends BasicElement {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 5),
-      child: Row(
-        children: [
-          Expanded(
-              //fit: FlexFit.loose,
-              child: RichText(
-                  text: TextSpan(
-                      text: text,
-                      style: const TextStyle(
-                        //color: Colors.black,
-                        color: Colors.white,
-                        //fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ))))
-        ],
-      ),
-    );
+    return const Placeholder(color: Colors.red);
+  }
+
+  @override
+  Widget getListed(BuildContext context) {
+    return RichText(
+        text: TextSpan(
+            text: text,
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white,
+              //fontWeight: FontWeight.bold,
+              fontSize: 16,
+            )));
+  }
+
+  Widget getFocused(BuildContext context) {
+    return RichText(
+        text: TextSpan(
+            text: text,
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white,
+              //fontWeight: FontWeight.bold,
+              fontSize: 20,
+            )));
   }
 }

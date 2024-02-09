@@ -62,7 +62,7 @@ class ListedNote extends StatelessWidget {
           //padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             //color: Colors.black,
-            border: Border.all(width: 2, color: Colors.white),
+            border: Border.all(width: 1, color: Colors.white),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: InkWell(
@@ -74,14 +74,17 @@ class ListedNote extends StatelessWidget {
                     builder: (context) => FocusedNote(ncd),
                   ));
             },
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                children: [
-                  //note elements
-                  for (final element in ncd.eList) ...{element}
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //note elements
+                for (final element in ncd.eList) ...{
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: element.getListed(context),
+                  )
+                }
+              ],
             ),
           ),
         ),
@@ -118,7 +121,7 @@ class _FocusedNoteState extends State<FocusedNote> {
             for (final el in widget.ncd.eList) ...{
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: el.build(context),
+                child: el.getFocused(context),
               )
             }
           ],
