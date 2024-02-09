@@ -67,7 +67,12 @@ class ListedNote extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              print("note tapped");
+              //print("note tapped");
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FocusedNote(ncd),
+                  ));
             },
             child: Padding(
               padding: const EdgeInsets.all(5.0),
@@ -86,16 +91,72 @@ class ListedNote extends StatelessWidget {
 }
 
 class FocusedNote extends StatefulWidget {
-  const FocusedNote({super.key});
+  NoteCoreData ncd;
+
+  FocusedNote(this.ncd, {super.key});
 
   @override
   State<FocusedNote> createState() => _FocusedNoteState();
 }
 
 class _FocusedNoteState extends State<FocusedNote> {
+  //NoteCoreData ncd;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            for (final el in widget.ncd.eList) ...{
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: el.build(context),
+              )
+            }
+          ],
+        ),
+      ),
+      //bottom app bar
+      bottomNavigationBar: BottomAppBar(
+          height: 80,
+          elevation: 0,
+          color: Colors.black,
+          child: Row(
+            children: [
+              Expanded(
+                child: EditableText(
+                  controller: TextEditingController(text: "something"),
+                  focusNode: FocusNode(
+                    canRequestFocus: true,
+                  ),
+                  backgroundCursorColor: Colors.grey,
+                  cursorColor: Colors.white,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed code here!
+                },
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                child: const Icon(Icons.add),
+              ),
+            ],
+          )),
+    );
   }
 }
 
