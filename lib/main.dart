@@ -6,6 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /*
+
+  TODO:
+    scrollable focused notes
+    wrapping text on focused note
+
+    multiple categories
+    adding notes
+    server hosted notes
+    editing categories
+    app icon
+    adaptive column count
+    more elements
+    note coloring
+    note reordering
+
+*/
+
+/*
   MASON TIPS
     material you
     have link in settings to github

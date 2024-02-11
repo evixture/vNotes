@@ -9,6 +9,31 @@ import 'package:path_provider/path_provider.dart';
 
 import 'note.dart';
 
+//NOTE: dart:io does not work on web
+void writeToYaml(String path, String data) {
+  //print("before writing to yaml");
+  YamlWriter yw = YamlWriter();
+  String yd = yw.write(data);
+  //print("after writing to yaml");
+
+  try {
+    writeToNoteFile(yd);
+  } catch (e) {
+    //print("file error: ${e.toString()}");
+  }
+}
+
+void writeToNoteFile(String data) async {
+  if (Platform.isAndroid || Platform.isIOS) {
+    var p = await getApplicationDocumentsDirectory();
+    File f = File('${p.path}/notes.yaml');
+    f.writeAsStringSync(data);
+  } else {
+    File f = File('data/notes.yaml');
+    f.writeAsStringSync(data);
+  }
+}
+
 class Category extends StatefulWidget {
   //constant variables if any
 
@@ -27,17 +52,6 @@ class _CategoryState extends State<Category> {
   bool textChanged = false;
   bool submittedText = false;
   bool clickedOff = false;
-
-  void writeToFile(String data) async {
-    if (Platform.isAndroid || Platform.isIOS) {
-      var p = await getApplicationDocumentsDirectory();
-      File f = File('${p.path}/notes.yaml');
-      f.writeAsStringSync(data);
-    } else {
-      File f = File('data/notes.yaml');
-      f.writeAsStringSync(data);
-    }
-  }
 
   Future<void> readYAML(String path) async {
     String resp;
@@ -80,20 +94,6 @@ class _CategoryState extends State<Category> {
     readYAML('data/notes.yaml');
   }
 
-  //NOTE: dart:io does not work on web
-  void writeToYaml(String path) {
-    print("before writing to yaml");
-    YamlWriter yw = YamlWriter();
-    String yd = yw.write(toYaml());
-    print("after writing to yaml");
-
-    try {
-      writeToFile(yd);
-    } catch (e) {
-      print("file error: ${e.toString()}");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,29 +120,22 @@ class _CategoryState extends State<Category> {
                 child: EditableText(
                   controller: TextEditingController(text: catName),
                   onSubmitted: (value) {
-                    //print("submitted, $value");
                     catName = value;
                     textChanged = false;
-                    //print("saved to file");
-                    writeToYaml('data/notes.yaml');
-                    //yamlUpdate();
+
+                    writeToYaml('data/notes.yaml', toYaml());
                   },
                   // onEditingComplete: () {
                   //   print("editing complete");
                   // },
                   onChanged: (value) {
-                    //print('changed text, $value');
                     catName = value;
                     textChanged = true;
                   },
                   onTapOutside: (event) {
-                    //print("clicked off, $event");
-
                     if (textChanged) {
                       textChanged = false;
-                      //print("saved to file");
-                      writeToYaml('data/notes.yaml');
-                      //yamlUpdate();
+                      writeToYaml('data/notes.yaml', toYaml());
                     }
                   },
                   focusNode: FocusNode(
