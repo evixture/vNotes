@@ -28,39 +28,30 @@ class _CategoryState extends State<Category> {
   bool submittedText = false;
   bool clickedOff = false;
 
-  void permissionTest() async {
-    //await Permission.storage.request();
-  }
-
   void writeToFile(String data) async {
-    var p = await getApplicationDocumentsDirectory();
-    var f = File('${p.path}/notes.yaml');
-    f.writeAsStringSync(data);
-    print('wrote to yaml file on system at ${p.path}');
+    if (Platform.isAndroid || Platform.isIOS) {
+      var p = await getApplicationDocumentsDirectory();
+      File f = File('${p.path}/notes.yaml');
+      f.writeAsStringSync(data);
+    } else {
+      File f = File('data/notes.yaml');
+      f.writeAsStringSync(data);
+    }
   }
 
   Future<void> readYAML(String path) async {
-    // if (await Permission.storage.status.isGranted) {
-    //   print("have storage permission");
-    // }
+    String resp;
 
-    // if (await Permission.storage.request().isGranted) {
-    //   var directory = await getExternalStorageDirectory();
-    //   print(directory);
-    // }
+    if (Platform.isAndroid || Platform.isIOS) {
+      var p = await getApplicationDocumentsDirectory();
+      File f = File('${p.path}/notes.yaml');
+      resp = f.readAsStringSync();
+    } else {
+      resp = await rootBundle.loadString(path);
+    }
 
-    //try to make a file locally
-    // print('before writing new file');
-    // var p = await getApplicationDocumentsDirectory();
-    // var f = File('${p.path}/something.txt');
-    // f.writeAsString("-> i hope this does something at least");
-    // print('after writing new file');
-
-    //var resp = await rootBundle.loadString(path);
-    var p = await getApplicationDocumentsDirectory();
-    var f = File('${p.path}/notes.yaml');
-    YamlMap yaml = loadYaml(f.readAsStringSync());
-    print("reading yaml file in ${p.path}");
+    YamlMap yaml = loadYaml(resp);
+    //print("reading yaml file in ${p.path}");
 
     catName = yaml['name'];
     var yamlNoteList = yaml['notes'];
@@ -75,11 +66,6 @@ class _CategoryState extends State<Category> {
   }
 
   dynamic toYaml() {
-    // String ret = "---\nname: $catName\nnotes:";
-    // for (final n in ncdList) {
-    //   ret += n.toYaml();
-    // }
-    // return ret;
     return {
       'name': catName,
       'notes': [
@@ -173,7 +159,7 @@ class _CategoryState extends State<Category> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  permissionTest();
+                  //do stuff
                 },
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.white,

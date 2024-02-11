@@ -1,12 +1,12 @@
-name: 'does this update?'
+name: 'does this update? yes'
 notes: 
-  - lastEdit: '2024-02-08 09:29:07.249545'
+  - lastEdit: '2024-02-10 22:30:55.417652'
     elements: 
       - type: 'title'
         data: 'This is a long title to see if things wrap!'
       - type: 'text'
         data: 'this is text1'
-  - lastEdit: '2024-02-08 09:29:07.251601'
+  - lastEdit: '2024-02-10 22:30:55.417652'
     elements: 
       - type: 'title'
         data: 'Short Title!'
