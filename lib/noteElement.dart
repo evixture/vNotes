@@ -94,15 +94,17 @@ class TextElement extends BasicElement {
             color: Colors.white,
           ),
         ),
-        RichText(
-            text: TextSpan(
-                text: text,
-                style: const TextStyle(
-                  //color: Colors.black,
-                  color: Colors.white,
-                  //fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ))),
+        Flexible(
+          child: RichText(
+              text: TextSpan(
+                  text: text,
+                  style: const TextStyle(
+                    //color: Colors.black,
+                    color: Colors.white,
+                    //fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ))),
+        ),
       ],
     );
   }

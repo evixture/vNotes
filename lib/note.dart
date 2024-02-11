@@ -109,8 +109,9 @@ class _FocusedNoteState extends State<FocusedNote> {
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          //reverse: true,
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (final el in widget.ncd.eList) ...{
               Padding(

@@ -8,18 +8,18 @@ import 'package:url_launcher/url_launcher.dart';
 /*
 
   TODO:
-    scrollable focused notes
-    wrapping text on focused note
 
-    multiple categories
-    adding notes
-    server hosted notes
-    editing categories
     app icon
-    adaptive column count
+    adding notes
     more elements
+    multiple categories
+    editing categories
+    adaptive column count
     note coloring
     note reordering
+    splash screen (android)
+      https://medium.com/flutter-community/flutter-2019-real-splash-screens-tutorial-16078660c7a1
+    server hosted notes
 
 */
 
