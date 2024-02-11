@@ -4,7 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yaml/yaml.dart';
 import 'package:yaml_writer/yaml_writer.dart';
 import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'note.dart';
@@ -29,7 +29,7 @@ class _CategoryState extends State<Category> {
   bool clickedOff = false;
 
   void permissionTest() async {
-    await Permission.storage.request();
+    //await Permission.storage.request();
   }
 
   void writeToFile(String data) async {
