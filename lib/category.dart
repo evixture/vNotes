@@ -4,6 +4,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yaml/yaml.dart';
 import 'package:yaml_writer/yaml_writer.dart';
 import 'dart:io';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'note.dart';
 
@@ -26,9 +28,39 @@ class _CategoryState extends State<Category> {
   bool submittedText = false;
   bool clickedOff = false;
 
+  void permissionTest() async {
+    await Permission.storage.request();
+  }
+
+  void writeToFile(String data) async {
+    var p = await getApplicationDocumentsDirectory();
+    var f = File('${p.path}/notes.yaml');
+    f.writeAsStringSync(data);
+    print('wrote to yaml file on system at ${p.path}');
+  }
+
   Future<void> readYAML(String path) async {
-    var resp = await rootBundle.loadString(path);
-    YamlMap yaml = loadYaml(resp);
+    // if (await Permission.storage.status.isGranted) {
+    //   print("have storage permission");
+    // }
+
+    // if (await Permission.storage.request().isGranted) {
+    //   var directory = await getExternalStorageDirectory();
+    //   print(directory);
+    // }
+
+    //try to make a file locally
+    // print('before writing new file');
+    // var p = await getApplicationDocumentsDirectory();
+    // var f = File('${p.path}/something.txt');
+    // f.writeAsString("-> i hope this does something at least");
+    // print('after writing new file');
+
+    //var resp = await rootBundle.loadString(path);
+    var p = await getApplicationDocumentsDirectory();
+    var f = File('${p.path}/notes.yaml');
+    YamlMap yaml = loadYaml(f.readAsStringSync());
+    print("reading yaml file in ${p.path}");
 
     catName = yaml['name'];
     var yamlNoteList = yaml['notes'];
@@ -64,14 +96,13 @@ class _CategoryState extends State<Category> {
 
   //NOTE: dart:io does not work on web
   void writeToYaml(String path) {
-    print("1    something");
+    print("before writing to yaml");
     YamlWriter yw = YamlWriter();
     String yd = yw.write(toYaml());
-    print("something");
+    print("after writing to yaml");
 
     try {
-      File f = File(path);
-      f.writeAsStringSync(yd);
+      writeToFile(yd);
     } catch (e) {
       print("file error: ${e.toString()}");
     }
@@ -142,7 +173,7 @@ class _CategoryState extends State<Category> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  // Add your onPressed code here!
+                  permissionTest();
                 },
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.white,
