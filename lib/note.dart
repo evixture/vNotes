@@ -9,6 +9,7 @@ class NoteCoreData {
 
   List<BasicElement> eList = [];
   String lastEdit = '';
+  bool edited = false;
   //other vars like color and timestamp once added
 
   NoteCoreData(this.yamlInput) {
@@ -30,7 +31,7 @@ class NoteCoreData {
 
   dynamic toYaml() {
     return {
-      'lastEdit': DateTime.now().toString(),
+      'lastEdit': edited ? DateTime.now().toString() : lastEdit,
       'elements': [
         for (final el in eList) ...{el.toYaml()}
       ]
@@ -113,6 +114,10 @@ class _FocusedNoteState extends State<FocusedNote> {
           //reverse: true,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: TimeStampElement(widget.ncd.lastEdit),
+            ),
             for (final el in widget.ncd.eList) ...{
               Padding(
                 padding: const EdgeInsets.all(5.0),

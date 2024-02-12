@@ -10,6 +10,27 @@ abstract class BasicElement extends StatelessWidget {
   Widget getFocused(BuildContext context);
 }
 
+class TimeStampElement extends StatelessWidget {
+  String lastEdit = '';
+
+  TimeStampElement(this.lastEdit, {super.key}) {
+    //dt = DateTime.parse(lastEdit);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+        text: TextSpan(
+            text: "Last edited ${DateTime.parse(lastEdit)}",
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            )));
+  }
+}
+
 // ignore: must_be_immutable
 class TitleElement extends BasicElement {
   String text = '';
