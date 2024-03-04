@@ -129,36 +129,39 @@ class _FocusedNoteState extends State<FocusedNote> {
       ),
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
-          height: 80,
-          elevation: 0,
-          color: Colors.black,
-          child: Row(
-            children: [
-              Expanded(
-                child: EditableText(
-                  controller: TextEditingController(text: "something"),
-                  focusNode: FocusNode(
-                    canRequestFocus: true,
-                  ),
-                  backgroundCursorColor: Colors.grey,
-                  cursorColor: Colors.white,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+        height: 80,
+        elevation: 0,
+        color: Colors.black,
+        child: Row(
+          children: [
+            Expanded(
+              child: EditableText(
+                controller: TextEditingController(text: "something"),
+                focusNode: FocusNode(
+                  canRequestFocus: true,
+                ),
+                backgroundCursorColor: Colors.grey,
+                cursorColor: Colors.white,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              FloatingActionButton(
-                onPressed: () {
-                  // Add your onPressed code here!
-                },
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.add),
-              ),
-            ],
-          )),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                // Add your onPressed code here!
+                //temp
+                Navigator.pop(context);
+              },
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white,
+              child: const Icon(Icons.add),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

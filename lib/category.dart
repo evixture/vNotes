@@ -111,55 +111,70 @@ class _CategoryState extends State<Category> {
       ),
       //bottom app bar
       bottomNavigationBar: BottomAppBar(
-          height: 80,
-          elevation: 0,
-          color: Colors.black,
-          child: Row(
-            children: [
-              Expanded(
-                child: EditableText(
-                  controller: TextEditingController(text: catName),
-                  onSubmitted: (value) {
-                    catName = value;
-                    textChanged = false;
+        height: 80,
+        elevation: 0,
+        color: Colors.black,
+        child: Row(
+          children: [
+            Expanded(
+              child: EditableText(
+                controller: TextEditingController(text: catName),
+                onSubmitted: (value) {
+                  catName = value;
+                  textChanged = false;
 
+                  writeToYaml('data/notes.yaml', toYaml());
+                },
+                // onEditingComplete: () {
+                //   print("editing complete");
+                // },
+                onChanged: (value) {
+                  catName = value;
+                  textChanged = true;
+                },
+                onTapOutside: (event) {
+                  if (textChanged) {
+                    textChanged = false;
                     writeToYaml('data/notes.yaml', toYaml());
-                  },
-                  // onEditingComplete: () {
-                  //   print("editing complete");
-                  // },
-                  onChanged: (value) {
-                    catName = value;
-                    textChanged = true;
-                  },
-                  onTapOutside: (event) {
-                    if (textChanged) {
-                      textChanged = false;
-                      writeToYaml('data/notes.yaml', toYaml());
-                    }
-                  },
-                  focusNode: FocusNode(
-                    canRequestFocus: true,
-                  ),
-                  backgroundCursorColor: Colors.grey,
-                  cursorColor: Colors.white,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  }
+                },
+                focusNode: FocusNode(
+                  canRequestFocus: true,
+                ),
+                backgroundCursorColor: Colors.grey,
+                cursorColor: Colors.white,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              FloatingActionButton(
-                onPressed: () {
-                  //do stuff
-                },
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.add),
-              ),
-            ],
-          )),
+            ),
+            IconButton(
+              onPressed: () {
+                //on tap
+              },
+              icon: const Icon(Icons.arrow_back),
+              iconSize: 40,
+            ),
+            IconButton(
+              onPressed: () {
+                //on tap
+              },
+              icon: const Icon(Icons.arrow_forward),
+              iconSize: 40,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                //do stuff
+              },
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white,
+              child: const Icon(Icons.add),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

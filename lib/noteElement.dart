@@ -20,14 +20,16 @@ class TimeStampElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-        text: TextSpan(
-            text: "Last edited ${DateTime.parse(lastEdit)}",
-            style: const TextStyle(
-              //color: Colors.black,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            )));
+      text: TextSpan(
+        text: "Last edited ${DateTime.parse(lastEdit)}",
+        style: const TextStyle(
+          //color: Colors.black,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+      ),
+    );
   }
 }
 
@@ -50,27 +52,31 @@ class TitleElement extends BasicElement {
   @override
   Widget getListed(BuildContext context) {
     return RichText(
-        text: TextSpan(
-            text: text,
-            style: const TextStyle(
-              //color: Colors.black,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            )));
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          //color: Colors.black,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
   }
 
   @override
   Widget getFocused(BuildContext context) {
     return RichText(
-        text: TextSpan(
-            text: text,
-            style: const TextStyle(
-              //color: Colors.black,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            )));
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          //color: Colors.black,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 32,
+        ),
+      ),
+    );
   }
 }
 
@@ -93,14 +99,16 @@ class TextElement extends BasicElement {
   @override
   Widget getListed(BuildContext context) {
     return RichText(
-        text: TextSpan(
-            text: text,
-            style: const TextStyle(
-              //color: Colors.black,
-              color: Colors.white,
-              //fontWeight: FontWeight.bold,
-              fontSize: 16,
-            )));
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          //color: Colors.black,
+          color: Colors.white,
+          //fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+    );
   }
 
   @override
@@ -117,14 +125,16 @@ class TextElement extends BasicElement {
         ),
         Flexible(
           child: RichText(
-              text: TextSpan(
-                  text: text,
-                  style: const TextStyle(
-                    //color: Colors.black,
-                    color: Colors.white,
-                    //fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ))),
+            text: TextSpan(
+              text: text,
+              style: const TextStyle(
+                //color: Colors.black,
+                color: Colors.white,
+                //fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
         ),
       ],
     );

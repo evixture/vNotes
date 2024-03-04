@@ -68,34 +68,36 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          RichText(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RichText(
               text: const TextSpan(
-                  text: "vNotes",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 42,
-                  ))),
-          const Text(
-            "App made by",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
+                text: "vNotes",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 42,
+                ),
+              ),
             ),
-          ),
-          const Text(
-            "Andrew Schmidt",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+            const Text(
+              "App made by",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
             ),
-          ),
-          RichText(
-            text: TextSpan(
+            const Text(
+              "Andrew Schmidt",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            RichText(
+              text: TextSpan(
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     var url = Uri.parse('https://www.google.com');
@@ -108,10 +110,12 @@ class SplashPage extends StatelessWidget {
                   color: Colors.lightBlue,
                   fontSize: 12,
                   decoration: TextDecoration.underline,
-                )),
-          )
-        ],
-      )),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
