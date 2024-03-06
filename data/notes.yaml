@@ -12,3 +12,7 @@ notes:
         data: 'Short Title!'
       - type: 'text'
         data: 'this is text1 and this one is rather long just to see what happens!'
+  - lastEdit: '2024-03-06 14:02:01.564392'
+    elements: 
+      - type: 'text'
+        data: 'This is a brand new note! Maybe this will work first time!'

@@ -10,6 +10,7 @@ abstract class BasicElement extends StatelessWidget {
   Widget getFocused(BuildContext context);
 }
 
+// ignore: must_be_immutable
 class TimeStampElement extends StatelessWidget {
   String lastEdit = '';
 
@@ -41,6 +42,7 @@ class TitleElement extends BasicElement {
 
   @override
   dynamic toYaml() {
+    //map<string, string>??
     return {'type': 'title', 'data': text};
   }
 

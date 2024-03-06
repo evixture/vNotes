@@ -29,9 +29,19 @@ class NoteCoreData {
     }
   }
 
+  NoteCoreData.withoutYaml() {
+    lastEdit = DateTime.now().toString();
+
+    eList.add(TextElement(
+        "This is a brand new note! Maybe this will work first time!"));
+  }
+
   dynamic toYaml() {
+    bool tempEdited = edited;
+    if (edited) edited = false;
+
     return {
-      'lastEdit': edited ? DateTime.now().toString() : lastEdit,
+      'lastEdit': tempEdited ? DateTime.now().toString() : lastEdit,
       'elements': [
         for (final el in eList) ...{el.toYaml()}
       ]

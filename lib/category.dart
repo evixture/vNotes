@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'note.dart';
 
 //NOTE: dart:io does not work on web
-void writeToYaml(String path, String data) {
+void writeToYaml(String path, Map<String, dynamic> data) {
   //print("before writing to yaml");
   YamlWriter yw = YamlWriter();
   String yd = yw.write(data);
@@ -79,7 +79,7 @@ class _CategoryState extends State<Category> {
     setState(() {});
   }
 
-  dynamic toYaml() {
+  Map<String, dynamic> toYaml() {
     return {
       'name': catName,
       'notes': [
@@ -166,7 +166,20 @@ class _CategoryState extends State<Category> {
             ),
             FloatingActionButton(
               onPressed: () {
-                //do stuff
+                NoteCoreData newNote = NoteCoreData.withoutYaml();
+                FocusedNote newFN = FocusedNote(newNote);
+                ncdList.add(newNote);
+
+                //update with new info from file
+                setState(() {});
+                writeToYaml('data/notes.yaml', toYaml());
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => newFN,
+                  ),
+                );
               },
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
