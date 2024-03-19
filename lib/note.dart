@@ -1,4 +1,5 @@
 import 'noteElement.dart';
+import 'navButton.dart';
 import 'package:flutter/material.dart';
 
 //idea - class that stores main data for note so
@@ -32,8 +33,9 @@ class NoteCoreData {
   NoteCoreData.withoutYaml() {
     lastEdit = DateTime.now().toString();
 
-    eList.add(TextElement(
-        "This is a brand new note! Maybe this will work first time!"));
+    eList.add(
+      TextElement("This is a brand new note! Maybe this will work first time!"),
+    );
   }
 
   dynamic toYaml() {
@@ -163,7 +165,37 @@ class _FocusedNoteState extends State<FocusedNote> {
               onPressed: () {
                 // Add your onPressed code here!
                 //temp
-                Navigator.pop(context);
+                //Navigator.pop(context);
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.white,
+                  shape: Border.all(style: BorderStyle.none),
+                  builder: (context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AddElementButton(
+                          Icons.abc,
+                          "Title",
+                          () {
+                            widget.ncd.eList.add(TitleElement("New Title!"));
+                            setState(() {});
+                            Navigator.pop(context);
+                          },
+                        ),
+                        AddElementButton(
+                          Icons.abc,
+                          "Text",
+                          () {
+                            widget.ncd.eList.add(TitleElement("New Text"));
+                            setState(() {});
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,

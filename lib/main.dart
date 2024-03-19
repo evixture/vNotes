@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
     accurate edit timestamps
     app icon
     adding notes
+    adding elements
     more elements
     multiple categories
     editing categories
