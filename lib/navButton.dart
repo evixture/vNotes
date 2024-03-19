@@ -16,11 +16,16 @@ class _AddElementButtonState extends State<AddElementButton> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
+      //color: Colors.red,
       child: Material(
+        color: Colors.white,
         child: InkWell(
           child: Row(
             children: [
               Icon(widget.icon, color: Colors.black),
+              const SizedBox(
+                width: 5,
+              ),
               RichText(
                 text: TextSpan(
                   text: widget.name,
@@ -28,7 +33,7 @@ class _AddElementButtonState extends State<AddElementButton> {
                     //color: Colors.black,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                    fontSize: 32,
                   ),
                 ),
               )

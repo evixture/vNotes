@@ -168,7 +168,7 @@ class _FocusedNoteState extends State<FocusedNote> {
                 //Navigator.pop(context);
                 showModalBottomSheet(
                   context: context,
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.black,
                   shape: Border.all(style: BorderStyle.none),
                   builder: (context) {
                     return Column(
@@ -187,7 +187,7 @@ class _FocusedNoteState extends State<FocusedNote> {
                           Icons.abc,
                           "Text",
                           () {
-                            widget.ncd.eList.add(TitleElement("New Text"));
+                            widget.ncd.eList.add(TextElement("New Text"));
                             setState(() {});
                             Navigator.pop(context);
                           },

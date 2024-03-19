@@ -16,3 +16,7 @@ notes:
     elements: 
       - type: 'text'
         data: 'This is a brand new note! Maybe this will work first time!'
+  - lastEdit: '2024-03-19 09:21:47.795017'
+    elements: 
+      - type: 'text'
+        data: 'This is a brand new note! Maybe this will work first time!'

@@ -20,16 +20,28 @@ class TimeStampElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: "Last edited ${DateTime.parse(lastEdit)}",
-        style: const TextStyle(
-          //color: Colors.black,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 14,
+    return Row(
+      children: [
+        const SizedBox(
+          height: 30,
+          width: 30,
+          child: Icon(
+            Icons.edit_sharp,
+            color: Colors.white54,
+          ),
         ),
-      ),
+        RichText(
+          text: TextSpan(
+            text: "Last edited ${DateTime.parse(lastEdit)}",
+            style: const TextStyle(
+              //color: Colors.black,
+              color: Colors.white54,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

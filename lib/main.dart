@@ -8,11 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 /*
 
   TODO:
-
-    accurate edit timestamps
     app icon
     adding notes
-    adding elements
     more elements
     multiple categories
     editing categories
